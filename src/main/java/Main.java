@@ -51,6 +51,10 @@ public class Main {
                 .max(Comparator.comparing(Person::getAge));
         System.out.println(max);
 
+//        Min
+        Optional<Person> min = getPeople().stream()
+                .min(Comparator.comparing(Person::getGender));
+        System.out.println(min);
     }
 
     private static List<Person> getPeople() {
