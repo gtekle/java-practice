@@ -32,29 +32,22 @@ public class Main {
         System.out.println(sortedPeople);
 
 //        All match
-        boolean existAgeGreaterThanFive = getPeople().stream()
-                .allMatch(person -> person.getAge() > 8);
+        boolean existAgeGreaterThanFive = getPeople().stream().allMatch(person -> person.getAge() > 8);
         System.out.println(existAgeGreaterThanFive);
 
 //        Any match
-        boolean anyMatch = getPeople().stream()
-                .anyMatch(person -> person.getAge() > 121);
+        boolean anyMatch = getPeople().stream().anyMatch(person -> person.getAge() > 121);
         System.out.println(anyMatch);
 
 //        None match
-        boolean noneMatch = getPeople().stream()
-                .noneMatch(person -> person.getAge() > 100);
+        boolean noneMatch = getPeople().stream().noneMatch(person -> person.getAge() > 100);
         System.out.println(noneMatch);
 
 //        Max
-        Optional<Person> max = getPeople().stream()
-                .max(Comparator.comparing(Person::getAge));
-        System.out.println(max);
+        getPeople().stream().max(Comparator.comparing(Person::getAge)).ifPresent(System.out::println);
 
 //        Min
-        Optional<Person> min = getPeople().stream()
-                .min(Comparator.comparing(Person::getGender));
-        System.out.println(min);
+        getPeople().stream().min(Comparator.comparing(Person::getGender)).ifPresent(System.out::println);
     }
 
     private static List<Person> getPeople() {
