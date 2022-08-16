@@ -30,6 +30,11 @@ public class Main {
 
         System.out.println(sortedPeople);
 
+//        All match
+        boolean existAgeGreaterThanFive = getPeople().stream()
+                .allMatch(person -> person.getAge() > 8);
+        System.out.println(existAgeGreaterThanFive);
+
     }
 
     private static List<Person> getPeople() {
