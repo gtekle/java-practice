@@ -1,10 +1,21 @@
 import com.streams_api.Gender;
 import com.streams_api.Person;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
+
+//        Filer - Imperative Approach
+        List<Person> females = new ArrayList<>();
+        getPeople().forEach(person -> {
+            if (person.getGender() == Gender.FEMALE) {
+                females.add(person);
+            }
+        });
+        System.out.println(females);
         System.out.println(getPeople());
+
     }
 
     private static List<Person> getPeople() {
