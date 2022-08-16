@@ -58,6 +58,12 @@ public class Main {
             people.forEach(System.out::println);
             System.out.println();
         });
+
+        Optional<String> oldestFemale = getPeople().stream()
+                .filter(person -> person.getGender().equals(Gender.FEMALE))
+                .max(Comparator.comparing(Person::getAge))
+                .map(Person::getName);
+        oldestFemale.ifPresent(System.out::println);
     }
 
     private static List<Person> getPeople() {
