@@ -55,7 +55,10 @@ public class Main {
         Map<Gender, List<Person>> groupByGender = getPeople().stream().collect(Collectors.groupingBy(Person::getGender));
         groupByGender.forEach((gender, people) -> {
             System.out.println(gender);
-            people.forEach(System.out::println);
+            people.stream().collect(Collectors.groupingBy(Person::getDept)).forEach((dept, byDeptPeople) -> {
+                System.out.println(gender + "-" + dept);
+                byDeptPeople.stream().map(Person::getName).forEach(System.out::println);
+            });
             System.out.println();
         });
 
@@ -68,13 +71,13 @@ public class Main {
 
     private static List<Person> getPeople() {
         return List.of(
-                new Person("James Bond", 20, Gender.MALE),
-                new Person("Alitia Smith", 33, Gender.FEMALE),
-                new Person("Helen White", 57, Gender.FEMALE),
-                new Person("Alex Boz", 14, Gender.MALE),
-                new Person("Jamie Goa", 99, Gender.MALE),
-                new Person("Anna Cook", 7, Gender.FEMALE),
-                new Person("Zelda Brown", 120, Gender.FEMALE)
+                new Person("James Bond", 20, Gender.MALE, "IT"),
+                new Person("Alitia Smith", 33, Gender.FEMALE, "Operation"),
+                new Person("Helen White", 57, Gender.FEMALE, "IT"),
+                new Person("Alex Boz", 14, Gender.MALE, "Operation"),
+                new Person("Jamie Goa", 99, Gender.MALE, "IT"),
+                new Person("Anna Cook", 7, Gender.FEMALE, "Operation"),
+                new Person("Zelda Brown", 120, Gender.FEMALE, "IT")
         );
     }
 }
