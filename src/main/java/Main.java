@@ -40,6 +40,11 @@ public class Main {
                 .anyMatch(person -> person.getAge() > 121);
         System.out.println(anyMatch);
 
+//        None match
+        boolean noneMatch = getPeople().stream()
+                .noneMatch(person -> person.getAge() > 100);
+        System.out.println(noneMatch);
+
     }
 
     private static List<Person> getPeople() {
