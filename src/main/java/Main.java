@@ -3,6 +3,7 @@ import com.streams_api.Person;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 
 public class Main {
     public static void main(String[] args) {
@@ -44,6 +45,11 @@ public class Main {
         boolean noneMatch = getPeople().stream()
                 .noneMatch(person -> person.getAge() > 100);
         System.out.println(noneMatch);
+
+//        Max
+        Optional<Person> max = getPeople().stream()
+                .max(Comparator.comparing(Person::getAge));
+        System.out.println(max);
 
     }
 
