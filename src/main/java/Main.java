@@ -9,7 +9,7 @@ public class Main {
 //        Filer - Imperative Approach
         List<Person> females = new ArrayList<>();
         getPeople().forEach(person -> {
-            if (person.getGender() == Gender.FEMALE) {
+            if (person.getGender().equals(Gender.FEMALE)) {
                 females.add(person);
             }
         });
@@ -18,7 +18,7 @@ public class Main {
 
         //    Declarative approach - Filter
         var femaleList = getPeople().stream()
-                .filter(person -> person.getGender() == Gender.FEMALE)
+                .filter(person -> person.getGender().equals(Gender.FEMALE))
                 .toList();
         System.out.println(femaleList);
 
