@@ -1,6 +1,7 @@
 import com.streams_api.Gender;
 import com.streams_api.Person;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Main {
@@ -21,6 +22,13 @@ public class Main {
                 .filter(person -> person.getGender().equals(Gender.FEMALE))
                 .toList();
         System.out.println(femaleList);
+
+        //    Declarative approach - Sort
+        var sortedFemaleList = femaleList.stream()
+                .sorted(Comparator.comparing(Person::getName))
+                .toList();
+
+        System.out.println(sortedFemaleList);
 
     }
 
