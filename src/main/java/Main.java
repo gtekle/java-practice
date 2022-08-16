@@ -24,11 +24,11 @@ public class Main {
         System.out.println(femaleList);
 
         //    Declarative approach - Sort
-        var sortedFemaleList = femaleList.stream()
-                .sorted(Comparator.comparing(Person::getName))
+        var sortedPeople = getPeople().stream()
+                .sorted(Comparator.comparing(Person::getAge).thenComparing(Person::getAge))
                 .toList();
 
-        System.out.println(sortedFemaleList);
+        System.out.println(sortedPeople);
 
     }
 
