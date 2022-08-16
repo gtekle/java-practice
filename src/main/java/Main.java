@@ -16,6 +16,12 @@ public class Main {
         System.out.println(females);
         System.out.println(getPeople());
 
+        //    Declarative approach - Filter
+        var femaleList = getPeople().stream()
+                .filter(person -> person.getGender() == Gender.FEMALE)
+                .toList();
+        System.out.println(femaleList);
+
     }
 
     private static List<Person> getPeople() {
