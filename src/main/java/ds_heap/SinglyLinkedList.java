@@ -47,7 +47,33 @@ public class SinglyLinkedList {
                 currentNode.setNextNode(newNode);
             }
             currentNode = next;
-            System.out.println("end of while..." + next);
+        }
+    }
+
+    private void insert(int index, int data) {
+        ListNode newNode = new ListNode(data);
+        if (this.head == null || index <= 0) {
+            newNode.setNextNode(this.head);
+            this.head = newNode;
+            return;
+        }
+
+        int count = 0;
+        ListNode currentNode = this.head;
+        ListNode prevNode = currentNode;
+
+        while (count <= index && currentNode != null) {
+            if (count == index) {
+                newNode.setNextNode(currentNode);
+                prevNode.setNextNode(newNode);
+            }
+            prevNode = currentNode;
+            currentNode = currentNode.getNextNode();
+            count++;
+        }
+
+        if (index > count) {
+            prevNode.setNextNode(newNode);
         }
     }
 
@@ -92,6 +118,10 @@ public class SinglyLinkedList {
         ll.add(7);
         System.out.println(ll);
         ll.reverseList();
+        System.out.println(ll);
+        ll.insert(0, 10);
+        ll.insert(2, 12);
+        ll.insert(9, 19);
         System.out.println(ll);
     }
 }
