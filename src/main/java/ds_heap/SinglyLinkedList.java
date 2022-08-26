@@ -98,6 +98,33 @@ public class SinglyLinkedList {
         }
     }
 
+    private ListNode findNthNodeFromEnd(int n) {
+        if(n < 1 || this.head == null) {
+            return null;
+        }
+
+        ListNode cur = this.head;
+        ListNode secondPtr = this.head;
+        ListNode nthNode = null;
+
+        while(n > 0 && cur != null) {
+            cur = cur.getNextNode();
+            n--;
+        }
+
+        if(cur == null) {
+            return null;
+        }
+
+        while(cur != null) {
+            cur = cur.getNextNode();
+            nthNode = secondPtr;
+            secondPtr = secondPtr.getNextNode();
+        }
+
+        return nthNode;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -123,5 +150,10 @@ public class SinglyLinkedList {
         ll.insert(2, 12);
         ll.insert(9, 19);
         System.out.println(ll);
+
+        System.out.println(ll.findNthNodeFromEnd(2).getData());
+        boolean isNotNull = ll.findNthNodeFromEnd(0) != null;
+        System.out.println(isNotNull ? ll.findNthNodeFromEnd(0).getData() : "null");
+        System.out.println(isNotNull ? ll.findNthNodeFromEnd(20).getData() : "null");
     }
 }
