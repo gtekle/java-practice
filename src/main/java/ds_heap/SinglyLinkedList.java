@@ -36,15 +36,39 @@ public class SinglyLinkedList {
         ListNode newNode = new ListNode(data);
         if (this.head == null) {
             this.head = newNode;
-        } else {
-            ListNode currentNode = this.head;
+            return;
+        }
 
-            while (currentNode != null) {
-                if (currentNode.getNextNode() == null) {
-                    currentNode.setNextNode(newNode);
-                }
-                currentNode = currentNode.getNextNode();
+        ListNode currentNode = this.head;
+
+        while (currentNode != null) {
+            ListNode next = currentNode.getNextNode();
+            if (next == null) {
+                currentNode.setNextNode(newNode);
             }
+            currentNode = next;
+            System.out.println("end of while..." + next);
+        }
+    }
+
+    private void reverseList() {
+        if (this.head == null) {
+            System.out.println("The LinkedList is empty!");
+            return;
+        }
+
+        ListNode prevNode = null;
+        ListNode currentNode = this.head;
+
+        while (currentNode != null) {
+            ListNode next = currentNode.getNextNode();
+            if (next == null) {
+                this.head = currentNode;
+            }
+
+            currentNode.setNextNode(prevNode);
+            prevNode = currentNode;
+            currentNode = next;
         }
     }
 
@@ -66,6 +90,8 @@ public class SinglyLinkedList {
         ll.add(4);
         ll.add(6);
         ll.add(7);
+        System.out.println(ll);
+        ll.reverseList();
         System.out.println(ll);
     }
 }
