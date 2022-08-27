@@ -23,15 +23,16 @@ public class CustomQueue {
     }
 
     public void enqueue(int data) throws IllegalStateException, NullPointerException {
-        if (this.size == this.queue.length - 1) {
-            throw new IllegalStateException("The element can't be added because the queue is full: Overflow");
-        }
 
         if(this.rear < 0) {
             this.rear = 0;
         }
 
-        queue[this.rear] = data;
+        if (this.queue[this.rear] != Integer.MIN_VALUE && this.queue[this.rear] != 0) {
+            throw new IllegalStateException("The element can't be added because the queue is full: Overflow");
+        }
+
+        this.queue[this.rear] = data;
         this.size++;
         this.rear = ++this.rear % this.queue.length;
     }
@@ -58,7 +59,7 @@ public class CustomQueue {
     }
 
     public boolean isFull() {
-        return (this.size == this.queue.length - 1);
+        return (this.size == this.queue.length);
     }
 
     public int queueSize() {
